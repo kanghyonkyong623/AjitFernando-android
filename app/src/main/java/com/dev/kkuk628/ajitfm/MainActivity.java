@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.airbnb.lottie.LottieAnimationView;
 
@@ -16,17 +17,17 @@ public class MainActivity extends AppCompatActivity {
         put("Anim1.json", "images");
     }};
 
+    LottieAnimationView animationView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        animationView = (LottieAnimationView) findViewById(R.id.animation_view);
+
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
 
-        LottieAnimationView animationView = (LottieAnimationView) findViewById(R.id.animation_view);
-        animationView.setImageAssetsFolder("images");
-//        animationView.setAnimation("Anim1.json");
-//        animationView.loop(true);
 
 //        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {
@@ -45,16 +46,21 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    public void anim1_click(){
-
+    public void anim1_click(View view){
+//        animationView.setImageAssetsFolder("images");
+        animationView.setAnimation("New_Anim1.json");
+        animationView.loop(true);
+        animationView.playAnimation();
     }
 
-    public void anim2_click(){
-
+    public void anim2_click(View view){
+        animationView.setAnimation("New_Anim2.json");
+        animationView.loop(true);
+        animationView.playAnimation();
     }
 
-    public void stop_click(){
-
+    public void stop_click(View view){
+        animationView.cancelAnimation();
     }
 
     @Override
